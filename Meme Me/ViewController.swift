@@ -1,5 +1,5 @@
 //
-//  MemeEditorViewController.swift
+//  ViewController.swift
 //  Meme Me
 //
 //  Created by Lauren Bongartz on 3/30/15.
@@ -10,10 +10,7 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate  {
     
     //Outlets
-    @IBOutlet weak var imagePickerView: UIImageView!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var topTextField: UITextField!
-    @IBOutlet weak var bottomTextField: UITextField!
+    
     
     // Text field delegate objects
     let topTextDelegate = TopTextFieldDelegate()
