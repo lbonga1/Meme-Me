@@ -19,7 +19,7 @@ class TopTextFieldDelegate: NSObject, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        textField.text = ""
+        textField.attributedPlaceholder = NSAttributedString(string: "")
         // Clears text field when it is selected.
     }
     
