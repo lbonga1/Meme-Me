@@ -20,6 +20,7 @@
 		1A9224371AF9D43C008DBBFE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9224361AF9D43C008DBBFE /* CollectionViewCell.swift */; };
 		1A93D5931AF69FFC00F72B3D /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93D5921AF69FFC00F72B3D /* TableView.swift */; };
 		1A93D5951AF6A0DD00F72B3D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A93D5941AF6A0DD00F72B3D /* CollectionView.swift */; };
+		1ADF738C1AFD5D57004767A4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADF738B1AFD5D57004767A4 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		1A9224361AF9D43C008DBBFE /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1A93D5921AF69FFC00F72B3D /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableView.swift; path = ../TableView.swift; sourceTree = "<group>"; };
 		1A93D5941AF6A0DD00F72B3D /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		1ADF738B1AFD5D57004767A4 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				1A7F445E1AF2B139001170C9 /* Meme.swift */,
 				1A7F44591AF29E22001170C9 /* ViewController.swift */,
 				1A93D5921AF69FFC00F72B3D /* TableView.swift */,
+				1ADF738B1AFD5D57004767A4 /* TableViewCell.swift */,
 				1A93D5941AF6A0DD00F72B3D /* CollectionView.swift */,
 				1A9224361AF9D43C008DBBFE /* CollectionViewCell.swift */,
 				1A63203E1AFAB26000352861 /* DetailViewController.swift */,
@@ -246,6 +249,7 @@
 				1A93D5931AF69FFC00F72B3D /* TableView.swift in Sources */,
 				1A9224371AF9D43C008DBBFE /* CollectionViewCell.swift in Sources */,
 				1A93D5951AF6A0DD00F72B3D /* CollectionView.swift in Sources */,
+				1ADF738C1AFD5D57004767A4 /* TableViewCell.swift in Sources */,
 				1A230B641AEC5686000E1A54 /* BottomTextFieldDelegate.swift in Sources */,
 				1A7F445A1AF29E22001170C9 /* ViewController.swift in Sources */,
 				1A230B3D1AEC4DBA000E1A54 /* AppDelegate.swift in Sources */,

@@ -18,6 +18,15 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Global variable
     var sentMemes: [Meme]!
         
+//    override func viewDidLoad() {
+//        if sentMemes.count == 0 {
+//            let storyboard = self.storyboard
+//            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+//            
+//            self.presentViewController(controller, animated: true, completion: nil)
+//        }
+//    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let object = UIApplication.sharedApplication().delegate
@@ -35,14 +44,23 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             
         let CellID = "SentMeme"
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellID, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellID, forIndexPath: indexPath) as! TableViewCell
         let meme = self.sentMemes[indexPath.row]
             
         // Sets cell label and image from Meme struct.
-        cell.textLabel?.text = meme.topText
-        cell.imageView?.image = meme.memedImage
+        cell.previewText?.text = meme.topText
+        cell.memeImageView?.image = meme.memedImage
+        cell.memeImageView.contentMode = .ScaleAspectFit
             
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailVC") as! DetailViewController
+        detailController.sentMemes = self.sentMemes[indexPath.row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+        
     }
     
     // Gets Meme Editor View Controller.

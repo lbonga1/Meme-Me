@@ -29,7 +29,9 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     // Collection View data source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        println ("returning count")
         return sentMemes.count
+        
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -41,7 +43,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Sets cell image from Meme struct.
         let imageView = UIImageView(image: meme.memedImage)
         cell.memeImageView? = imageView
-        
+        println("completed cell")
         return cell
     }
 
