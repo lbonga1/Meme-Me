@@ -18,22 +18,28 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Global variable
     var sentMemes: [Meme]!
         
-//    override func viewDidLoad() {
-//        if sentMemes.count == 0 {
-//            let storyboard = self.storyboard
-//            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
-//            
-//            self.presentViewController(controller, animated: true, completion: nil)
-//        }
-//    }
-    
-    override func viewWillAppear(animated: Bool) {
+        override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        // Loads meme data from AppDelegate when view refreshes.
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         sentMemes = appDelegate.memes
         
+        // Refresh sent meme data.
         self.tableView.reloadData()
+        println(sentMemes.count)
+            
+        self.tableView.contentInset = UIEdgeInsetsMake(0,0,0,0)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Redirects to MemeEditorVC if no memes have been sent.
+        if sentMemes.count == 0 {
+            let storyboard = self.storyboard
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
     }
     
     // Table View data source
@@ -42,7 +48,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            
+        // Assigns custom cell
         let CellID = "SentMeme"
         let cell = tableView.dequeueReusableCellWithIdentifier(CellID, forIndexPath: indexPath) as! TableViewCell
         let meme = self.sentMemes[indexPath.row]

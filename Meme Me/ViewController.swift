@@ -175,9 +175,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } else {
             // Displays sent memes in table view.
             self.dismissViewControllerAnimated(true, completion: nil)
-//            var controller: TableView
-//            controller = self.storyboard?.instantiateViewControllerWithIdentifier("TableView") as! TableView
-//            self.presentViewController(controller, animated: true, completion: nil)
         }
     }
     

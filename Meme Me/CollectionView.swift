@@ -20,6 +20,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         sentMemes = appDelegate.memes
