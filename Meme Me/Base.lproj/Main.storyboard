@@ -578,7 +578,7 @@
                         <action selector="doneEditing:" destination="aaL-Zw-YyT" id="hc5-ZT-5cX"/>
                     </connections>
                 </barButtonItem>
-                <barButtonItem title="Delete" id="yKE-uX-Trr">
+                <barButtonItem title="Delete All" id="yKE-uX-Trr">
                     <connections>
                         <action selector="deleteMemes:" destination="aaL-Zw-YyT" id="fMc-QW-YsP"/>
                     </connections>
