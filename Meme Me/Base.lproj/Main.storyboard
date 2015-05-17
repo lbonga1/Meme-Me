@@ -149,8 +149,11 @@
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="zXQ-qQ-Ncc" secondAttribute="trailing" constant="-16" id="YJb-rL-sLn"/>
                             <constraint firstItem="nf4-0e-Rpf" firstAttribute="top" secondItem="BtI-C3-Mjs" secondAttribute="bottom" id="aD8-KX-lrz"/>
+                            <constraint firstItem="nf4-0e-Rpf" firstAttribute="top" secondItem="RsP-QW-Qzf" secondAttribute="bottom" id="aMH-5W-qfB"/>
                             <constraint firstItem="nf4-0e-Rpf" firstAttribute="bottom" secondItem="cYe-gg-grk" secondAttribute="bottomMargin" id="cSM-PQ-ojW"/>
+                            <constraint firstItem="RsP-QW-Qzf" firstAttribute="top" secondItem="1iM-Xy-oXe" secondAttribute="bottom" id="dWo-ip-ZUB"/>
                             <constraint firstItem="zXQ-qQ-Ncc" firstAttribute="leading" secondItem="cYe-gg-grk" secondAttribute="leadingMargin" constant="-16" id="drD-a1-9Hk"/>
+                            <constraint firstItem="RsP-QW-Qzf" firstAttribute="top" secondItem="owA-IQ-T0b" secondAttribute="bottom" id="jNb-5p-3GO"/>
                             <constraint firstItem="RsP-QW-Qzf" firstAttribute="top" secondItem="cYe-gg-grk" secondAttribute="topMargin" constant="-50" id="lIV-qf-UFR"/>
                             <constraint firstItem="RsP-QW-Qzf" firstAttribute="top" secondItem="1iM-Xy-oXe" secondAttribute="bottom" constant="10" id="ljS-l6-Sqc">
                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -164,6 +167,9 @@
                             <constraint firstItem="BtI-C3-Mjs" firstAttribute="top" secondItem="RsP-QW-Qzf" secondAttribute="bottom" id="rPy-hN-In5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="owA-IQ-T0b" secondAttribute="trailing" constant="-16" id="tns-1Y-RRv"/>
                             <constraint firstItem="zXQ-qQ-Ncc" firstAttribute="top" secondItem="owA-IQ-T0b" secondAttribute="bottom" constant="10" id="u6p-Gg-Vnl"/>
+                            <constraint firstItem="BtI-C3-Mjs" firstAttribute="top" secondItem="RsP-QW-Qzf" secondAttribute="bottom" constant="1" id="uQD-8I-e7K">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="BtI-C3-Mjs" firstAttribute="top" secondItem="nf4-0e-Rpf" secondAttribute="bottom" constant="1" id="yFA-DG-ZfX"/>
                         </constraints>
                         <variation key="default">
@@ -175,38 +181,42 @@
                                 <exclude reference="zXQ-qQ-Ncc"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="4mJ-3w-V6A"/>
+                                <exclude reference="JHB-KU-ueI"/>
+                                <exclude reference="Ms6-DN-C9q"/>
+                                <exclude reference="YJb-rL-sLn"/>
+                                <exclude reference="drD-a1-9Hk"/>
+                                <exclude reference="u6p-Gg-Vnl"/>
+                                <exclude reference="55c-lt-Uz8"/>
+                                <exclude reference="9Up-74-yWG"/>
+                                <exclude reference="H6T-xu-1zL"/>
+                                <exclude reference="rPy-hN-In5"/>
+                                <exclude reference="uQD-8I-e7K"/>
+                                <exclude reference="yFA-DG-ZfX"/>
+                                <exclude reference="5Kq-Lf-nWD"/>
+                                <exclude reference="9l5-m4-7zW"/>
+                                <exclude reference="MYb-D5-ArE"/>
+                                <exclude reference="aD8-KX-lrz"/>
+                                <exclude reference="aMH-5W-qfB"/>
+                                <exclude reference="cSM-PQ-ojW"/>
+                                <exclude reference="3uE-a2-suc"/>
+                                <exclude reference="LQE-uD-s3u"/>
+                                <exclude reference="Pkx-fO-MJ4"/>
+                                <exclude reference="tns-1Y-RRv"/>
                                 <exclude reference="7xj-gS-stT"/>
                                 <exclude reference="J1h-wk-7Qd"/>
                                 <exclude reference="Jl6-D0-xBG"/>
                                 <exclude reference="Lqs-dc-jel"/>
                                 <exclude reference="OeN-IS-Ylz"/>
                                 <exclude reference="U5s-MI-5Xy"/>
+                                <exclude reference="dWo-ip-ZUB"/>
+                                <exclude reference="jNb-5p-3GO"/>
                                 <exclude reference="lIV-qf-UFR"/>
                                 <exclude reference="ljS-l6-Sqc"/>
                                 <exclude reference="nZ0-YI-A7B"/>
                                 <exclude reference="nah-rf-sNe"/>
                                 <exclude reference="p1U-CD-nh9"/>
                                 <exclude reference="phG-ba-Wre"/>
-                                <exclude reference="3uE-a2-suc"/>
-                                <exclude reference="LQE-uD-s3u"/>
-                                <exclude reference="Pkx-fO-MJ4"/>
-                                <exclude reference="tns-1Y-RRv"/>
-                                <exclude reference="Ms6-DN-C9q"/>
-                                <exclude reference="YJb-rL-sLn"/>
-                                <exclude reference="drD-a1-9Hk"/>
-                                <exclude reference="u6p-Gg-Vnl"/>
-                                <exclude reference="4mJ-3w-V6A"/>
-                                <exclude reference="JHB-KU-ueI"/>
-                                <exclude reference="5Kq-Lf-nWD"/>
-                                <exclude reference="9l5-m4-7zW"/>
-                                <exclude reference="MYb-D5-ArE"/>
-                                <exclude reference="aD8-KX-lrz"/>
-                                <exclude reference="cSM-PQ-ojW"/>
-                                <exclude reference="55c-lt-Uz8"/>
-                                <exclude reference="9Up-74-yWG"/>
-                                <exclude reference="H6T-xu-1zL"/>
-                                <exclude reference="rPy-hN-In5"/>
-                                <exclude reference="yFA-DG-ZfX"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -218,38 +228,42 @@
                                 <include reference="zXQ-qQ-Ncc"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="4mJ-3w-V6A"/>
+                                <include reference="JHB-KU-ueI"/>
+                                <exclude reference="Ms6-DN-C9q"/>
+                                <include reference="YJb-rL-sLn"/>
+                                <include reference="drD-a1-9Hk"/>
+                                <include reference="u6p-Gg-Vnl"/>
+                                <exclude reference="55c-lt-Uz8"/>
+                                <exclude reference="9Up-74-yWG"/>
+                                <include reference="H6T-xu-1zL"/>
+                                <exclude reference="rPy-hN-In5"/>
+                                <include reference="uQD-8I-e7K"/>
+                                <include reference="yFA-DG-ZfX"/>
+                                <include reference="5Kq-Lf-nWD"/>
+                                <include reference="9l5-m4-7zW"/>
+                                <include reference="MYb-D5-ArE"/>
+                                <exclude reference="aD8-KX-lrz"/>
+                                <exclude reference="aMH-5W-qfB"/>
+                                <exclude reference="cSM-PQ-ojW"/>
+                                <include reference="3uE-a2-suc"/>
+                                <exclude reference="LQE-uD-s3u"/>
+                                <include reference="Pkx-fO-MJ4"/>
+                                <include reference="tns-1Y-RRv"/>
                                 <exclude reference="7xj-gS-stT"/>
                                 <exclude reference="J1h-wk-7Qd"/>
                                 <exclude reference="Jl6-D0-xBG"/>
                                 <exclude reference="Lqs-dc-jel"/>
                                 <exclude reference="OeN-IS-Ylz"/>
                                 <include reference="U5s-MI-5Xy"/>
+                                <include reference="dWo-ip-ZUB"/>
+                                <exclude reference="jNb-5p-3GO"/>
                                 <exclude reference="lIV-qf-UFR"/>
                                 <exclude reference="ljS-l6-Sqc"/>
-                                <include reference="nZ0-YI-A7B"/>
+                                <exclude reference="nZ0-YI-A7B"/>
                                 <include reference="nah-rf-sNe"/>
                                 <exclude reference="p1U-CD-nh9"/>
                                 <exclude reference="phG-ba-Wre"/>
-                                <include reference="3uE-a2-suc"/>
-                                <exclude reference="LQE-uD-s3u"/>
-                                <include reference="Pkx-fO-MJ4"/>
-                                <include reference="tns-1Y-RRv"/>
-                                <exclude reference="Ms6-DN-C9q"/>
-                                <include reference="YJb-rL-sLn"/>
-                                <include reference="drD-a1-9Hk"/>
-                                <include reference="u6p-Gg-Vnl"/>
-                                <include reference="4mJ-3w-V6A"/>
-                                <include reference="JHB-KU-ueI"/>
-                                <include reference="5Kq-Lf-nWD"/>
-                                <include reference="9l5-m4-7zW"/>
-                                <include reference="MYb-D5-ArE"/>
-                                <exclude reference="aD8-KX-lrz"/>
-                                <exclude reference="cSM-PQ-ojW"/>
-                                <exclude reference="55c-lt-Uz8"/>
-                                <exclude reference="9Up-74-yWG"/>
-                                <include reference="H6T-xu-1zL"/>
-                                <include reference="rPy-hN-In5"/>
-                                <include reference="yFA-DG-ZfX"/>
                             </mask>
                         </variation>
                     </view>
@@ -297,11 +311,45 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hyh-Yd-yE2">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTJ-tf-SVD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="tK4-DQ-f1k"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem width="80" style="plain" systemItem="fixedSpace" id="Ee5-Yc-V0O"/>
+                                    <barButtonItem systemItem="edit" id="GuJ-dD-XOx">
+                                        <connections>
+                                            <action selector="editMeme:" destination="0EA-I2-Ypc" id="sxL-Ml-jPy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ksN-Sa-sec"/>
+                                    <barButtonItem systemItem="trash" id="OdO-KY-sSj">
+                                        <connections>
+                                            <action selector="deleteMeme:" destination="0EA-I2-Ypc" id="1PW-qK-IrM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="80" style="plain" systemItem="fixedSpace" id="edd-n1-vv6"/>
+                                </items>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tK4-DQ-f1k"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="tK4-DQ-f1k"/>
+                                    </mask>
+                                </variation>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sTJ-tf-SVD" firstAttribute="leading" secondItem="4aT-5t-3aZ" secondAttribute="leadingMargin" constant="-16" id="3kF-a6-UlT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hyh-Yd-yE2" secondAttribute="trailing" constant="-16" id="AX2-3a-fYa"/>
                             <constraint firstItem="hyh-Yd-yE2" firstAttribute="leading" secondItem="4aT-5t-3aZ" secondAttribute="leadingMargin" constant="-16" id="JZv-NJ-s33"/>
+                            <constraint firstItem="6g0-AX-24K" firstAttribute="top" secondItem="sTJ-tf-SVD" secondAttribute="bottom" id="OKI-Ey-ZEI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sTJ-tf-SVD" secondAttribute="trailing" constant="-16" id="PYe-un-jK7"/>
                             <constraint firstAttribute="bottomMargin" secondItem="hyh-Yd-yE2" secondAttribute="bottom" constant="-20" id="Vdm-Dx-oCG">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
@@ -310,8 +358,12 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="hyh-Yd-yE2"/>
+                                <exclude reference="sTJ-tf-SVD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="OKI-Ey-ZEI"/>
+                                <exclude reference="3kF-a6-UlT"/>
+                                <exclude reference="PYe-un-jK7"/>
                                 <exclude reference="AX2-3a-fYa"/>
                                 <exclude reference="JZv-NJ-s33"/>
                                 <exclude reference="Vdm-Dx-oCG"/>
@@ -321,8 +373,12 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="hyh-Yd-yE2"/>
+                                <include reference="sTJ-tf-SVD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="OKI-Ey-ZEI"/>
+                                <include reference="3kF-a6-UlT"/>
+                                <include reference="PYe-un-jK7"/>
                                 <include reference="AX2-3a-fYa"/>
                                 <include reference="JZv-NJ-s33"/>
                                 <include reference="Vdm-Dx-oCG"/>
@@ -331,7 +387,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="OdO-KY-sSj" id="lYc-Va-5Ou"/>
+                        <outlet property="editButton" destination="GuJ-dD-XOx" id="Kko-U8-wUT"/>
                         <outlet property="memeImageDetail" destination="hyh-Yd-yE2" id="54N-dj-koW"/>
+                        <segue destination="gfO-09-PTP" kind="presentation" identifier="detailToEdit" id="q2h-Tw-BVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ip5-Kf-o5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,7 +443,7 @@
                                     <constraint firstAttribute="height" constant="536" id="vvt-Ak-Gl7"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fVW-hW-IgX">
-                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="itemSize" width="110" height="110"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -394,7 +453,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="86F-sE-8gT">
@@ -403,6 +462,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="86F-sE-8gT" firstAttribute="top" secondItem="FxS-Rf-KVm" secondAttribute="top" constant="5" id="LtF-a2-ATu"/>
                                             <constraint firstAttribute="trailing" secondItem="86F-sE-8gT" secondAttribute="trailing" constant="5" id="PK0-xw-qVK"/>
@@ -493,19 +553,36 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="3XV-BF-PjL">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ae3-e0-Wbj">
-                            <connections>
-                                <action selector="newMeme:" destination="aaL-Zw-YyT" id="HtM-Vl-Mod"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="3XV-BF-PjL"/>
                     <connections>
-                        <outlet property="addMeme" destination="Ae3-e0-Wbj" id="fkE-SC-2sr"/>
+                        <outlet property="addButton" destination="RGR-dl-b1n" id="253-gw-10P"/>
                         <outlet property="collectionView" destination="T9X-yv-57D" id="cRA-TT-bhD"/>
+                        <outlet property="deleteButton" destination="yKE-uX-Trr" id="4qD-9f-dG6"/>
+                        <outlet property="doneButton" destination="9la-aW-H2b" id="ajX-aP-06T"/>
+                        <outlet property="editButton" destination="loz-3j-0SM" id="GFz-74-wW3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fb5-dv-1sw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="edit" id="loz-3j-0SM">
+                    <connections>
+                        <action selector="editMemes:" destination="aaL-Zw-YyT" id="HKt-pt-Y5H"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="add" id="RGR-dl-b1n">
+                    <connections>
+                        <action selector="newMeme:" destination="aaL-Zw-YyT" id="fzv-aE-cHi"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="done" id="9la-aW-H2b">
+                    <connections>
+                        <action selector="doneEditing:" destination="aaL-Zw-YyT" id="hc5-ZT-5cX"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Delete" id="yKE-uX-Trr">
+                    <connections>
+                        <action selector="deleteMemes:" destination="aaL-Zw-YyT" id="fMc-QW-YsP"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="-213" y="358"/>
         </scene>
@@ -524,6 +601,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="GXe-t1-O8K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="536" id="6Ok-gN-01t"/>
                                     <constraint firstAttribute="height" constant="487" id="lez-tt-whP"/>
                                 </constraints>
                                 <prototypes>
@@ -669,12 +747,14 @@
                                 </prototypes>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="6Ok-gN-01t"/>
                                         <exclude reference="lez-tt-whP"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="lez-tt-whP"/>
+                                        <include reference="6Ok-gN-01t"/>
+                                        <exclude reference="lez-tt-whP"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -687,6 +767,7 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="GXe-t1-O8K" secondAttribute="trailing" constant="-16" id="44n-bI-13K"/>
                             <constraint firstItem="GXe-t1-O8K" firstAttribute="top" secondItem="XYn-tE-PI7" secondAttribute="bottom" id="C4t-Pg-ywo"/>
+                            <constraint firstItem="GXe-t1-O8K" firstAttribute="bottom" secondItem="7Rx-WM-teI" secondAttribute="bottomMargin" id="GVd-M8-clz"/>
                             <constraint firstItem="GXe-t1-O8K" firstAttribute="leading" secondItem="7Rx-WM-teI" secondAttribute="leadingMargin" constant="-16" id="ZN4-Rl-BHw"/>
                             <constraint firstItem="ePW-Qh-u3v" firstAttribute="top" secondItem="GXe-t1-O8K" secondAttribute="bottom" id="jX3-a8-Hyz"/>
                         </constraints>
@@ -698,6 +779,7 @@
                                 <exclude reference="jX3-a8-Hyz"/>
                                 <exclude reference="44n-bI-13K"/>
                                 <exclude reference="C4t-Pg-ywo"/>
+                                <exclude reference="GVd-M8-clz"/>
                                 <exclude reference="ZN4-Rl-BHw"/>
                             </mask>
                         </variation>
@@ -706,26 +788,44 @@
                                 <include reference="GXe-t1-O8K"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="jX3-a8-Hyz"/>
+                                <exclude reference="jX3-a8-Hyz"/>
                                 <include reference="44n-bI-13K"/>
                                 <exclude reference="C4t-Pg-ywo"/>
+                                <include reference="GVd-M8-clz"/>
                                 <include reference="ZN4-Rl-BHw"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="LsW-X8-2gl">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GdS-kP-edm">
-                            <connections>
-                                <action selector="newMeme:" destination="IK3-4t-BdP" id="D3h-p7-L4K"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="LsW-X8-2gl"/>
                     <connections>
-                        <outlet property="addMeme" destination="GdS-kP-edm" id="wjG-Sa-E9N"/>
+                        <outlet property="addButton" destination="Qoj-kv-qe0" id="5Zu-w4-Bl1"/>
+                        <outlet property="deleteButton" destination="ngf-Y2-LDD" id="YB2-Dl-Ou6"/>
+                        <outlet property="doneButton" destination="6BZ-iP-tWS" id="dg2-s8-QwJ"/>
+                        <outlet property="editButton" destination="xiY-uV-TLi" id="c7O-Di-kRB"/>
                         <outlet property="tableView" destination="GXe-t1-O8K" id="A9h-wv-bNn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOS-oC-15g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="edit" id="xiY-uV-TLi">
+                    <connections>
+                        <action selector="editMemes:" destination="IK3-4t-BdP" id="qrc-tj-zl8"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="done" id="6BZ-iP-tWS">
+                    <connections>
+                        <action selector="doneEditing:" destination="IK3-4t-BdP" id="N5A-bZ-35n"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="add" id="Qoj-kv-qe0">
+                    <connections>
+                        <action selector="newMeme:" destination="IK3-4t-BdP" id="nTH-dd-ZVD"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Delete" id="ngf-Y2-LDD">
+                    <connections>
+                        <action selector="deleteMemes:" destination="IK3-4t-BdP" id="JFX-6s-MKC"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="-213" y="-304"/>
         </scene>

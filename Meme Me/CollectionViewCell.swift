@@ -10,6 +10,9 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    var deleteButton: UIButton!
+    
     @IBOutlet weak var memeImageView: UIImageView!
     
 }
+

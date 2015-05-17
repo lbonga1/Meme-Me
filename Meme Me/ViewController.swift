@@ -23,6 +23,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Global variable
     var sentMemes: [Meme]!
+    var passedImage: UIImage!
+    var passedTopText:String!
+    var passedBottomText:String!
     
     // Text field delegate objects
     let topTextDelegate = TopTextFieldDelegate()
@@ -30,6 +33,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Loads existing meme to edit if passed from Detail View Controller.
+        imagePickerView.image = passedImage
+        topTextField.text = passedTopText
+        bottomTextField.text = passedBottomText
         
         // Sets the text delegates.
         self.topTextField.delegate = topTextDelegate

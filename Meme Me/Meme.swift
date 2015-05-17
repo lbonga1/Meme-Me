@@ -9,7 +9,18 @@ import Foundation
 import UIKit
 
 
-struct Meme {
+func == (lhs: Meme, rhs: Meme) -> Bool {
+    if lhs.topText == rhs.topText &&
+        lhs.bottomText == rhs.bottomText &&
+        lhs.originalImage == rhs.originalImage &&
+        lhs.memedImage == rhs.memedImage {
+            return true
+    }
+    return false
+}
+
+
+struct Meme: Equatable {
     let topText: String
     let bottomText: String
     let originalImage: UIImage
