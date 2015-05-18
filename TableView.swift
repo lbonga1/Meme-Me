@@ -37,8 +37,6 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         super.viewWillAppear(animated)
         // Refresh sent meme data.
         self.tableView.reloadData()
-            
-        self.tableView.contentInset = UIEdgeInsetsMake(0,0,0,0)
     }
     
     override func viewDidAppear(animated: Bool) {

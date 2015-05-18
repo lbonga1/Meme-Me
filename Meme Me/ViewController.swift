@@ -143,13 +143,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         navBar.hidden = true
         bottomToolBar.hidden = true
         
+        let selectedImage = imagePickerView.image
+        let imageWidth = CGFloat(selectedImage!.size.width)
+        let imageHeight = CGFloat(selectedImage!.size.height)
+        
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame,
-            afterScreenUpdates: true)
+        if imageWidth < imageHeight {
+            UIGraphicsBeginImageContext(CGSizeMake(400, 562))
+            self.view.drawViewHierarchyInRect(CGRectMake(0, -63, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
+        } else {
+            UIGraphicsBeginImageContext(CGSizeMake(562, 400))
+            self.view.drawViewHierarchyInRect(CGRectMake(-52, 0, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
+        }
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
+//        // Render view to an image
+//        UIGraphicsBeginImageContext(self.view.frame.size)
+//        self.view.drawViewHierarchyInRect(self.view.frame,
+//            afterScreenUpdates: true)
+//        let memedImage : UIImage =
+//        UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
         
         // Makes top and bottom toolbars visible.
         navBar.hidden = false
