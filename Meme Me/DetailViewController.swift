@@ -27,16 +27,6 @@ class DetailViewController: UIViewController {
         // Sets UIImageView to meme image.
         self.memeImageDetail!.image = self.sentMemes.memedImage
         self.memeImageDetail!.contentMode = .ScaleAspectFit
-        
-//        let selectedImage = memeImageDetail.image
-//        let imageWidth = CGFloat(selectedImage!.size.width)
-//        let imageHeight = CGFloat(selectedImage!.size.height)
-//        
-//        if imageWidth < imageHeight {
-//            memeImageDetail.frame = CGRect(x: 0, y: 20, width: 400, height: 580)
-//        } else {
-//            memeImageDetail.frame = CGRect(x: , y: , width: 580, height: 400)
-//        }
     }
     
     @IBAction func editMeme(sender: UIBarButtonItem) {

@@ -25,9 +25,9 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set up buttons
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        navigationItem.leftBarButtonItem = editButton
-        navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = addButton
         updateDeleteButtonTitle()
         // Allows user to select multiple memes.
         self.tableView.allowsMultipleSelectionDuringEditing = true
@@ -59,7 +59,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let CellID = "SentMeme"
         let cell = tableView.dequeueReusableCellWithIdentifier(CellID, forIndexPath: indexPath) as! TableViewCell
         let meme = self.appDelegate.memes[indexPath.row]
-            
+        
         // Sets cell label and image from Meme struct.
         cell.previewText?.text = meme.topText
         cell.memeImageView?.image = meme.memedImage
@@ -70,17 +70,23 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
 
     // Cell selection options
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Updates bar button and delete button title.
         if self.tableView.editing {
-            navigationItem.leftBarButtonItem = deleteButton
+            navigationItem.rightBarButtonItem = deleteButton
             updateDeleteButtonTitle()
         } else {
-            // Gets Detail View Controller
+            // Gets Detail View Controller.
             let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailVC") as! DetailViewController
             detailController.sentMemes = self.appDelegate.memes[indexPath.row]
             detailController.memeIndex = indexPath.row
             
             self.navigationController!.pushViewController(detailController, animated: true)
         }
+    }
+    
+    // Update delete button title when memes are deselected.
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        updateDeleteButtonTitle()
     }
     
     // Allows for editing tableView cells.
@@ -94,7 +100,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             appDelegate.memes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
-        
+    
         // Gets Meme Editor View Controller if no sent memes are remaining.
         if appDelegate.memes.count == 0 {
             let storyboard = self.storyboard
@@ -108,8 +114,8 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         // Turns on editing mode.
         self.tableView.setEditing(true, animated: true)
         // Updates buttons.
-        navigationItem.leftBarButtonItem = deleteButton
-        navigationItem.rightBarButtonItem = doneButton
+        navigationItem.rightBarButtonItem = deleteButton
+        navigationItem.leftBarButtonItem = doneButton
         updateDeleteButtonTitle()
     }
     
@@ -135,10 +141,22 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     // Delete memes.
     func deleteSelection() {
+        println("Starting delete")
         // Get selected rows paths from tableView.
         if let selectedRows = tableView?.indexPathsForSelectedRows() as? [NSIndexPath]{
             // Check if items are selected.
             if selectedRows.isEmpty {
+                println("No selections")
+                // Delete everything, delete the objects from data model.
+                appDelegate.memes.removeAll(keepCapacity: false)
+                tableView.reloadData()
+            } else if selectedRows.count == appDelegate.memes.count {
+                println("Deleting all")
+                // Delete everything, delete the objects from data model.
+                appDelegate.memes.removeAll(keepCapacity: false)
+                tableView.reloadData()
+            } else {
+                println("Some selections")
                 // Create temporary array of selected items.
                 for selectedRow in selectedRows{
                     selectedMemes.append(appDelegate.memes[selectedRow.row])
@@ -147,21 +165,19 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 for object in selectedMemes {
                     if let index = find(appDelegate.memes, object){
                         appDelegate.memes.removeAtIndex(index)
+                        tableView.reloadData()
                     }
                 }
-            } else {
-                // Delete everything, delete the objects from data model.
-                appDelegate.memes.removeAll(keepCapacity: false)
-                //tableView.reloadSections(NSIndexSet(index: 0))
             }
+            updateDeleteButtonTitle()
         }
         
         // Turns off editing mode.
         self.tableView.setEditing(false, animated: true)
         // Hides and reveals necessary toolbars and buttons.
         self.tabBarController?.tabBar.hidden = false
-        navigationItem.leftBarButtonItem = editButton
-        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = addButton
         
         // Gets Meme Editor View Controller if no sent memes are remaining.
         if appDelegate.memes.count == 0 {
@@ -172,13 +188,12 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
-    
     @IBAction func doneEditing(sender: AnyObject) {
         // Turns off editing mode.
         self.tableView.setEditing(false, animated: true)
         // Updates buttons.
-        navigationItem.leftBarButtonItem = editButton
-        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = addButton
     }
     
     // Gets Meme Editor View Controller.

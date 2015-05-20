@@ -20,12 +20,11 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     // Global variable
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    var selectedMemes = [Meme]()
     
     override func viewDidLoad() {
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        navigationItem.leftBarButtonItem = editButton
-        navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = addButton
         updateDeleteButtonTitle()
     }
     
@@ -62,12 +61,12 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Meme selection options
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // Gets Detail View Controller if not editing.
-        if navigationItem.leftBarButtonItem == editButton {
+        if navigationItem.rightBarButtonItem == editButton {
             let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailVC") as! DetailViewController
                 detailController.sentMemes = appDelegate.memes[indexPath.row]
             self.navigationController!.pushViewController(detailController, animated: true)
         // Makes selections visible if editing.
-        } else if navigationItem.leftBarButtonItem == deleteButton {
+        } else if navigationItem.rightBarButtonItem == deleteButton {
             let cell = collectionView.cellForItemAtIndexPath(indexPath)
             cell?.alpha = 0.75
             updateDeleteButtonTitle()
@@ -84,8 +83,8 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func editMemes(sender: AnyObject) {
         // Hides and reveals necessary toolbars and buttons.
         self.tabBarController?.tabBar.hidden = true
-        navigationItem.rightBarButtonItem = doneButton
-        navigationItem.leftBarButtonItem = deleteButton
+        navigationItem.leftBarButtonItem = doneButton
+        navigationItem.rightBarButtonItem = deleteButton
         // Allows user to select multiple memes.
         collectionView.allowsMultipleSelection = true
     }
@@ -93,8 +92,8 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func doneEditing(sender: AnyObject) {
         // Hides and reveals necessary toolbars and buttons.
         self.tabBarController?.tabBar.hidden = false
-        navigationItem.rightBarButtonItem = addButton
-        navigationItem.leftBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = editButton
         // Disables selection of multiple memes.
         collectionView.allowsMultipleSelection = false
     
@@ -132,31 +131,44 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     // Delete memes.
     func deleteSelection() {
+        println("Starting delete")
         // Get selected items paths from collectionView.
-        if let selectedItems = collectionView?.indexPathsForSelectedItems() as? [NSIndexPath]{
+        if let selectedItems = collectionView?.indexPathsForSelectedItems() as? [NSIndexPath] {
             // Check if items are selected.
             if selectedItems.isEmpty {
+                println("No selections")
+                // Delete everything, delete the objects from data model.
+                appDelegate.memes.removeAll(keepCapacity: false)
+                collectionView?.reloadSections(NSIndexSet(index: 0))
+            } else if selectedItems.count == appDelegate.memes.count {
+                println("Deleting all")
+                // Delete everything, delete the objects from data model.
+                appDelegate.memes.removeAll(keepCapacity: false)
+                collectionView?.reloadSections(NSIndexSet(index: 0))
+            } else {
+                println("Some selections")
+                var selectedMemes = [Meme]()
                 // Create temporary array of selected items.
                 for selectedItem in selectedItems{
                     selectedMemes.append(appDelegate.memes[selectedItem.row])
+                println(selectedMemes.count)
                 }
                 // Find objects from temporary array in data source and delete them.
                 for object in selectedMemes {
                     if let index = find(appDelegate.memes, object){
                         appDelegate.memes.removeAtIndex(index)
+                    println(appDelegate.memes.count)
+                    collectionView?.reloadSections(NSIndexSet(index: 0))
                     }
                 }
-            } else {
-                // Delete everything, delete the objects from data model.
-                appDelegate.memes.removeAll(keepCapacity: false)
-                collectionView?.reloadSections(NSIndexSet(index: 0))
             }
+            updateDeleteButtonTitle()
         }
         
         // Hides and reveals necessary toolbars and buttons.
         self.tabBarController?.tabBar.hidden = false
-        navigationItem.leftBarButtonItem = editButton
-        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = addButton
         
         // Gets Meme Editor View Controller if no sent memes are remaining.
         if appDelegate.memes.count == 0 {
