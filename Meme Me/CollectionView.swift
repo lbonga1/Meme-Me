@@ -94,6 +94,11 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.tabBarController?.tabBar.hidden = false
         navigationItem.leftBarButtonItem = addButton
         navigationItem.rightBarButtonItem = editButton
+        
+//        for indexPath in self.collectionView.indexPathsForSelectedItems() {
+//            self.collectionView.deselectItemAtIndexPath(indexPath as? NSIndexPath, animated: true)
+//        }
+        
         // Disables selection of multiple memes.
         collectionView.allowsMultipleSelection = false
     
