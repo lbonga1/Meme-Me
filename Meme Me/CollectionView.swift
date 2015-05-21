@@ -22,6 +22,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
+        // Set up buttons.
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         navigationItem.rightBarButtonItem = editButton
         navigationItem.leftBarButtonItem = addButton
@@ -33,14 +34,16 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Refresh sent meme data.
         self.collectionView.reloadData()
     }
-
+    
+// Mark: -CollectionView methods
     // Collection View data source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return appDelegate.memes.count
     }
-
+    
+    // Collection View cell information
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        // Defines collectionView cell.
+        // Assigns custom cell.
         let CellID = "CollectionMeme"
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellID, forIndexPath: indexPath) as! CollectionViewCell
         let meme = appDelegate.memes[indexPath.item]
@@ -79,61 +82,8 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell?.alpha = 1.0
         updateDeleteButtonTitle()
     }
-
-    @IBAction func editMemes(sender: AnyObject) {
-        // Hides and reveals necessary toolbars and buttons.
-        self.tabBarController?.tabBar.hidden = true
-        navigationItem.leftBarButtonItem = doneButton
-        navigationItem.rightBarButtonItem = deleteButton
-        // Allows user to select multiple memes.
-        collectionView.allowsMultipleSelection = true
-    }
     
-    @IBAction func doneEditing(sender: AnyObject) {
-        // Hides and reveals necessary toolbars and buttons.
-        self.tabBarController?.tabBar.hidden = false
-        navigationItem.leftBarButtonItem = addButton
-        navigationItem.rightBarButtonItem = editButton
-        
-//        for indexPath in self.collectionView.indexPathsForSelectedItems() {
-//            self.collectionView.deselectItemAtIndexPath(indexPath as? NSIndexPath, animated: true)
-//        }
-        
-        // Disables selection of multiple memes.
-        collectionView.allowsMultipleSelection = false
-    
-    }
-    
-    // Presents Alert Controller for deletion options.
-    @IBAction func deleteMemes(sender: AnyObject) {
-        // UIAlertController titles
-        var alertTitle = "Remove Memes"
-        var actionTitle = "Are you sure you want to remove these items?"
-        // UIAlertController titles if only one meme is selected
-        if let indexPaths = collectionView?.indexPathsForSelectedItems() {
-            if indexPaths.count == 1 {
-                alertTitle = "Remove Meme"
-                actionTitle = "Are you sure you want to remove this item?"
-            }
-        }
-        
-        // UIAlertController actions
-        let alertController = UIAlertController(title: alertTitle, message: actionTitle, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) {action in self.dismissViewControllerAnimated(true, completion: nil)})
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {action in self.deleteSelection()})
-        
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    
-    // Gets Meme Editor View Controller.
-    @IBAction func newMeme(sender: AnyObject) {
-        let storyboard = self.storyboard
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-    }
-
+// Mark: - Additional methods
     // Delete memes.
     func deleteSelection() {
         println("Starting delete")
@@ -156,20 +106,19 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
                 // Create temporary array of selected items.
                 for selectedItem in selectedItems{
                     selectedMemes.append(appDelegate.memes[selectedItem.row])
-                println(selectedMemes.count)
+                    println(selectedMemes.count)
                 }
                 // Find objects from temporary array in data source and delete them.
                 for object in selectedMemes {
                     if let index = find(appDelegate.memes, object){
                         appDelegate.memes.removeAtIndex(index)
-                    println(appDelegate.memes.count)
-                    collectionView?.reloadSections(NSIndexSet(index: 0))
+                        println(appDelegate.memes.count)
+                        collectionView?.reloadSections(NSIndexSet(index: 0))
                     }
                 }
             }
             updateDeleteButtonTitle()
         }
-        
         // Hides and reveals necessary toolbars and buttons.
         self.tabBarController?.tabBar.hidden = false
         navigationItem.rightBarButtonItem = editButton
@@ -198,6 +147,59 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
             deleteButton.title = "Delete (\(selectedItems!.count))"
         }
     }
-
     
+// Mark: -IBActions
+    // Edit button
+    @IBAction func editMemes(sender: AnyObject) {
+        // Hides and reveals necessary toolbars and buttons.
+        self.tabBarController?.tabBar.hidden = true
+        navigationItem.leftBarButtonItem = doneButton
+        navigationItem.rightBarButtonItem = deleteButton
+        // Allows user to select multiple memes.
+        collectionView.allowsMultipleSelection = true
+    }
+    
+    // Done button
+    @IBAction func doneEditing(sender: AnyObject) {
+        // Hides and reveals necessary toolbars and buttons.
+        self.tabBarController?.tabBar.hidden = false
+        navigationItem.leftBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = editButton
+        // Changes all selected cells' opacity back to original value.
+        for indexPath in self.collectionView.indexPathsForSelectedItems() {
+            let cell = collectionView.cellForItemAtIndexPath(indexPath as! NSIndexPath)
+            cell?.alpha = 1.0
+        }
+        // Disables selection of multiple memes.
+        collectionView.allowsMultipleSelection = false
+    }
+    
+    // Delete button
+    @IBAction func deleteMemes(sender: AnyObject) {
+        // UIAlertController titles
+        var alertTitle = "Remove Memes"
+        var actionTitle = "Are you sure you want to remove these items?"
+        // UIAlertController titles if only one meme is selected
+        if let indexPaths = collectionView?.indexPathsForSelectedItems() {
+            if indexPaths.count == 1 {
+                alertTitle = "Remove Meme"
+                actionTitle = "Are you sure you want to remove this item?"
+            }
+        }
+        // UIAlertController actions
+        let alertController = UIAlertController(title: alertTitle, message: actionTitle, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) {action in self.dismissViewControllerAnimated(true, completion: nil)})
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {action in self.deleteSelection()})
+        // Presents Alert Controller for deletion options.
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // Add button
+    @IBAction func newMeme(sender: AnyObject) {
+        //Gets Meme Editor View Controller
+        let storyboard = self.storyboard
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 }

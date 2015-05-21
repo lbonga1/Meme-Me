@@ -49,11 +49,13 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
+// Mark: -Table View methods
     // Table View data source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appDelegate.memes.count
     }
     
+    // Table View row information
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Assigns custom cell
         let CellID = "SentMeme"
@@ -110,35 +112,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
-    @IBAction func editMemes(sender: AnyObject) {
-        // Turns on editing mode.
-        self.tableView.setEditing(true, animated: true)
-        // Updates buttons.
-        navigationItem.rightBarButtonItem = deleteButton
-        navigationItem.leftBarButtonItem = doneButton
-        updateDeleteButtonTitle()
-    }
-    
-    @IBAction func deleteMemes(sender: AnyObject) {
-        // UIAlertController titles
-        var alertTitle = "Remove Memes"
-        var actionTitle = "Are you sure you want to remove these items?"
-        // UIAlertController titles if only one meme is selected
-        if let indexPaths = tableView?.indexPathsForSelectedRows() {
-            if indexPaths.count == 1 {
-                alertTitle = "Remove Meme"
-                actionTitle = "Are you sure you want to remove this item?"
-            }
-        }
-        
-        // UIAlertController actions
-        let alertController = UIAlertController(title: alertTitle, message: actionTitle, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) {action in self.dismissViewControllerAnimated(true, completion: nil)})
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {action in self.deleteSelection()})
-        
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
+// Mark: -Additional methods
     // Delete memes.
     func deleteSelection() {
         println("Starting delete")
@@ -187,23 +161,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             self.presentViewController(controller, animated: true, completion: nil)
         }
     }
-    
-    @IBAction func doneEditing(sender: AnyObject) {
-        // Turns off editing mode.
-        self.tableView.setEditing(false, animated: true)
-        // Updates buttons.
-        navigationItem.rightBarButtonItem = editButton
-        navigationItem.leftBarButtonItem = addButton
-    }
-    
-    // Gets Meme Editor View Controller.
-    @IBAction func newMeme(sender: AnyObject) {
-        let storyboard = self.storyboard
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-    }
-    
+
     // Update delete button title depeding on number of rows selected.
     func updateDeleteButtonTitle() {
         if let selectedRows = tableView.indexPathsForSelectedRows() {
@@ -216,6 +174,54 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
+// Mark: -IBActions
+    // Edit button
+    @IBAction func editMemes(sender: AnyObject) {
+        // Turns on editing mode.
+        self.tableView.setEditing(true, animated: true)
+        // Updates buttons.
+        navigationItem.rightBarButtonItem = deleteButton
+        navigationItem.leftBarButtonItem = doneButton
+        updateDeleteButtonTitle()
+    }
+    
+    // Delete button
+    @IBAction func deleteMemes(sender: AnyObject) {
+        // UIAlertController titles
+        var alertTitle = "Remove Memes"
+        var actionTitle = "Are you sure you want to remove these items?"
+        // UIAlertController titles if only one meme is selected
+        if let indexPaths = tableView?.indexPathsForSelectedRows() {
+            if indexPaths.count == 1 {
+                alertTitle = "Remove Meme"
+                actionTitle = "Are you sure you want to remove this item?"
+            }
+        }
+        // UIAlertController actions
+        let alertController = UIAlertController(title: alertTitle, message: actionTitle, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) {action in self.dismissViewControllerAnimated(true, completion: nil)})
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {action in self.deleteSelection()})
+        // Presents Alert Controller for deletion options
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // Done button.
+    @IBAction func doneEditing(sender: AnyObject) {
+        // Turns off editing mode.
+        self.tableView.setEditing(false, animated: true)
+        // Updates buttons.
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = addButton
+    }
+    
+    // Add button.
+    @IBAction func newMeme(sender: AnyObject) {
+        // Gets Meme Editor View Controller.
+        let storyboard = self.storyboard
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 }
 
 

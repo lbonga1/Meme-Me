@@ -403,6 +403,10 @@
                                 <exclude reference="sTJ-tf-SVD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="OKI-Ey-ZEI"/>
+                                <exclude reference="3kF-a6-UlT"/>
+                                <exclude reference="PYe-un-jK7"/>
+                                <exclude reference="jOF-9K-bwV"/>
                                 <exclude reference="AX2-3a-fYa"/>
                                 <exclude reference="Dnm-3A-caz"/>
                                 <exclude reference="JZv-NJ-s33"/>
@@ -410,10 +414,6 @@
                                 <exclude reference="YeY-JE-LLp"/>
                                 <exclude reference="idD-0t-Zxi"/>
                                 <exclude reference="jB9-4E-vGo"/>
-                                <exclude reference="3kF-a6-UlT"/>
-                                <exclude reference="PYe-un-jK7"/>
-                                <exclude reference="jOF-9K-bwV"/>
-                                <exclude reference="OKI-Ey-ZEI"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -422,21 +422,21 @@
                                 <include reference="sTJ-tf-SVD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="OKI-Ey-ZEI"/>
+                                <include reference="3kF-a6-UlT"/>
+                                <include reference="PYe-un-jK7"/>
                                 <exclude reference="AX2-3a-fYa"/>
                                 <exclude reference="JZv-NJ-s33"/>
                                 <exclude reference="Vdm-Dx-oCG"/>
                                 <include reference="idD-0t-Zxi"/>
-                                <include reference="3kF-a6-UlT"/>
-                                <include reference="PYe-un-jK7"/>
-                                <include reference="OKI-Ey-ZEI"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
+                                <exclude reference="jOF-9K-bwV"/>
                                 <include reference="Dnm-3A-caz"/>
                                 <exclude reference="YeY-JE-LLp"/>
                                 <include reference="jB9-4E-vGo"/>
-                                <exclude reference="jOF-9K-bwV"/>
                             </mask>
                         </variation>
                     </view>
@@ -849,13 +849,13 @@
                                 <exclude reference="GXe-t1-O8K"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="jX3-a8-Hyz"/>
                                 <exclude reference="44n-bI-13K"/>
                                 <exclude reference="C4t-Pg-ywo"/>
                                 <exclude reference="GVd-M8-clz"/>
                                 <exclude reference="HAG-3H-2cE"/>
                                 <exclude reference="ZN4-Rl-BHw"/>
                                 <exclude reference="e7a-FD-cku"/>
-                                <exclude reference="jX3-a8-Hyz"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -863,11 +863,11 @@
                                 <include reference="GXe-t1-O8K"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="jX3-a8-Hyz"/>
                                 <include reference="44n-bI-13K"/>
                                 <exclude reference="C4t-Pg-ywo"/>
                                 <include reference="GVd-M8-clz"/>
                                 <include reference="ZN4-Rl-BHw"/>
-                                <exclude reference="jX3-a8-Hyz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">

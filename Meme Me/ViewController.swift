@@ -44,6 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(Bool) {
+        // Shared data source
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         sentMemes = appDelegate.memes
@@ -88,6 +89,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.unsubscribeFromKeyboardNotifications()
     }
     
+// Mark: -IBActions
     // Choose an image from photo library.
     @IBAction func pickImageFromLibrary(sender: UIBarButtonItem) {
         // Enables share button.
@@ -112,16 +114,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    // Sets UIImageView to selected image.
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject: AnyObject]!) {
-        let selectedImage : UIImage = image
-        imagePickerView.image = selectedImage
-        imagePickerView.contentMode = .ScaleAspectFit
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    // Opens activity view for sharing options.
+    // Share button
     @IBAction func shareMeme(sender: UIBarButtonItem) {
+        // Opens activity view for sharing options.
         let memedImage = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
@@ -134,6 +129,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         self.presentViewController(activityController, animated: true, completion: nil)
+    }
+    
+    // Cancel button
+    @IBAction func userCancel(sender: UIBarButtonItem) {
+        if sentMemes.count == 0 {
+            // Displays error message if user does not have any sent memes.
+            let alertController = UIAlertController()
+            alertController.title = "Uh oh."
+            alertController.message = "You do not have any sent memes to return to."
+            let okAction = UIAlertAction (title: "Let's meme.", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            // Displays sent memes in table view.
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+// Mark: - Image methods
+    // Sets UIImageView to selected image.
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject: AnyObject]!) {
+        let selectedImage : UIImage = image
+        imagePickerView.image = selectedImage
+        imagePickerView.contentMode = .ScaleAspectFit
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Create a UIImage that combines the image view and text fields.
@@ -159,14 +179,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-//        // Render view to an image
-//        UIGraphicsBeginImageContext(self.view.frame.size)
-//        self.view.drawViewHierarchyInRect(self.view.frame,
-//            afterScreenUpdates: true)
-//        let memedImage : UIImage =
-//        UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-        
         // Makes top and bottom toolbars visible.
         navBar.hidden = false
         bottomToolBar.hidden = false
@@ -186,21 +198,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         appDelegate.memes.append(meme)
     }
     
-    @IBAction func userCancel(sender: UIBarButtonItem) {
-        if sentMemes.count == 0 {
-            // Displays error message if user does not have any sent memes.
-            let alertController = UIAlertController()
-            alertController.title = "Uh oh."
-            alertController.message = "You do not have any sent memes to return to."
-            let okAction = UIAlertAction (title: "Let's meme.", style: UIAlertActionStyle.Default, handler: nil)
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
-        } else {
-            // Displays sent memes in table view.
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
+// Mark: -Keyboard methods
     // Gets the height of the keyboard to move the view.
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo

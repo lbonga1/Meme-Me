@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-
+// Overload == function to utilize .find method
 func == (lhs: Meme, rhs: Meme) -> Bool {
     if lhs.topText == rhs.topText &&
         lhs.bottomText == rhs.bottomText &&
@@ -19,14 +19,14 @@ func == (lhs: Meme, rhs: Meme) -> Bool {
     return false
 }
 
-
+// Make Meme struct equatable to utilize .find method
 struct Meme: Equatable {
     let topText: String
     let bottomText: String
     let originalImage: UIImage
     let memedImage: UIImage
 
-    
+    // Initiate struct.
     init (topText: String, bottomText: String, originalImage: UIImage, memedImage: UIImage){
         self.topText = topText
         self.bottomText = bottomText

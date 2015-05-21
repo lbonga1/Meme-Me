@@ -29,10 +29,31 @@ class DetailViewController: UIViewController {
         self.memeImageDetail!.contentMode = .ScaleAspectFit
     }
     
-    @IBAction func editMeme(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("detailToEdit", sender: self)
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Displays bottom tab bar.
+        self.tabBarController?.tabBar.hidden = false
     }
     
+// Mark: - IBActions
+    // Edit button
+    @IBAction func editMeme(sender: UIBarButtonItem) {
+        // Segue to Meme Editor View Controller
+        self.performSegueWithIdentifier("detailToEdit", sender: self)
+    }
+
+    // Delete button
+    @IBAction func deleteMeme(sender: UIBarButtonItem) {
+        // Shared data source
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        // Removes meme from array.
+        appDelegate.memes.removeAtIndex(memeIndex)
+        self.navigationController!.popViewControllerAnimated(true)
+    }
+    
+// Mark: -Additional method
+    // Pass meme data to Meme Editor View Controller.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "detailToEdit") {
             let memeEditorVC = segue.destinationViewController as!
@@ -42,22 +63,4 @@ class DetailViewController: UIViewController {
             memeEditorVC.passedBottomText = self.sentMemes.bottomText
         }
     }
-    
-    @IBAction func deleteMeme(sender: UIBarButtonItem) {
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        
-        appDelegate.memes.removeAtIndex(memeIndex)
-        self.navigationController!.popViewControllerAnimated(true)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        // Displays bottom tab bar.
-        self.tabBarController?.tabBar.hidden = false
-    }
-    
-        
-    
-    
 }
