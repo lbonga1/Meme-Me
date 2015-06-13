@@ -1,5 +1,5 @@
 //
-//  TableView.swift
+//  TableViewController.swift
 //  Meme Me
 //
 //  Created by Lauren Bongartz on 5/3/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate {
         
         
     // Outlets
@@ -49,7 +49,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
-// Mark: -Table View methods
+// MARK: - Table View methods
     // Table View data source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appDelegate.memes.count
@@ -112,7 +112,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
-// Mark: -Additional methods
+// MARK: - Additional methods
     // Delete memes.
     func deleteSelection() {
         println("Starting delete")
@@ -174,7 +174,7 @@ class TableView: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         }
     }
     
-// Mark: -IBActions
+// MARK: - Actions
     // Edit button
     @IBAction func editMemes(sender: AnyObject) {
         // Turns on editing mode.

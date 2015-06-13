@@ -1,5 +1,5 @@
 //
-//  BottomTextFieldDelegate.swift
+//  TextFieldDelegate.swift
 //  Meme Me
 //
 //  Created by Lauren Bongartz on 4/21/15.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BottomTextFieldDelegate: NSObject, UITextFieldDelegate {
+class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let newText = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)

@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
         self.tabBarController?.tabBar.hidden = false
     }
     
-// Mark: - IBActions
+// MARK: - Actions
     // Edit button
     @IBAction func editMeme(sender: UIBarButtonItem) {
         // Segue to Meme Editor View Controller
@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
         self.navigationController!.popViewControllerAnimated(true)
     }
     
-// Mark: -Additional method
+// MARK: - Additional method
     // Pass meme data to Meme Editor View Controller.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "detailToEdit") {

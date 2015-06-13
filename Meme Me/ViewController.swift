@@ -28,8 +28,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var passedBottomText:String!
     
     // Text field delegate objects
-    let topTextDelegate = TopTextFieldDelegate()
-    let bottomTextDelegate = BottomTextFieldDelegate()
+    let textDelegate = TextFieldDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +38,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomTextField.text = passedBottomText
         
         // Sets the text delegates.
-        self.topTextField.delegate = topTextDelegate
-        self.bottomTextField.delegate = bottomTextDelegate
+        self.topTextField.delegate = textDelegate
+        self.bottomTextField.delegate = textDelegate
     }
     
     override func viewWillAppear(Bool) {
@@ -65,21 +64,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSStrokeWidthAttributeName: -4.0
         ]
         
-        // Defines text field attributes.
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
+        // Text field properties method
+        func setTextProperties(textField: UITextField, defaultString: String) {
+            // Defines text field attributes
+            textField.defaultTextAttributes = memeTextAttributes
+            
+            // Sets text alignment.
+            textField.textAlignment = .Center
+            
+            // Sets capitalization default.
+            textField.autocapitalizationType = .AllCharacters
+            
+            // Sets placeholder text.
+            textField.attributedPlaceholder = NSAttributedString(string: defaultString, attributes: memeTextAttributes)
+        }
         
-        // Sets text alignment.
-        topTextField.textAlignment = .Center
-        bottomTextField.textAlignment = .Center
-        
-        // Sets capitalization default.
-        topTextField.autocapitalizationType = .AllCharacters
-        bottomTextField.autocapitalizationType = .AllCharacters
-        
-        // Sets placeholder text.
-        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: memeTextAttributes)
-        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: memeTextAttributes)
+        // Sets text field properties.
+        setTextProperties(topTextField, "TOP")
+        setTextProperties(bottomTextField, "BOTTOM")
         
         self.subscribeToKeyboardNotifications()
     }
@@ -89,29 +91,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.unsubscribeFromKeyboardNotifications()
     }
     
-// Mark: -IBActions
+// MARK: - Actions
     // Choose an image from photo library.
     @IBAction func pickImageFromLibrary(sender: UIBarButtonItem) {
-        // Enables share button.
-        shareButton.enabled = true
-        
-        // Opens photo library.
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        selectImage(.PhotoLibrary)
     }
     
     // Take a picture with the camera.
     @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
-        // Enables share button.
-        shareButton.enabled = true
-        
-        // Opens camera.
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        selectImage(.Camera)
     }
     
     // Share button
@@ -145,92 +133,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // Displays sent memes in table view.
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    }
-    
-// Mark: - Image methods
-    // Sets UIImageView to selected image.
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject: AnyObject]!) {
-        let selectedImage : UIImage = image
-        imagePickerView.image = selectedImage
-        imagePickerView.contentMode = .ScaleAspectFit
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    // Create a UIImage that combines the image view and text fields.
-    func generateMemedImage() -> UIImage
-    {
-        // Hides top and bottom toolbars.
-        navBar.hidden = true
-        bottomToolBar.hidden = true
-        
-        let selectedImage = imagePickerView.image
-        let imageWidth = CGFloat(selectedImage!.size.width)
-        let imageHeight = CGFloat(selectedImage!.size.height)
-        
-        // Render view to an image
-        if imageWidth < imageHeight {
-            UIGraphicsBeginImageContext(CGSizeMake(400, 562))
-            self.view.drawViewHierarchyInRect(CGRectMake(0, -63, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
-        } else {
-            UIGraphicsBeginImageContext(CGSizeMake(562, 400))
-            self.view.drawViewHierarchyInRect(CGRectMake(-52, 0, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
-        }
-        let memedImage : UIImage =
-        UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        // Makes top and bottom toolbars visible.
-        navBar.hidden = false
-        bottomToolBar.hidden = false
-        
-        return memedImage
-    }
-    
-    // Create the meme object and add it to memes array.
-    func saveMeme() {
-        //Create the meme
-        var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage:
-            imagePickerView.image!, memedImage: generateMemedImage())
-            
-        // Add it to the memes array in the Application Delegate
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
-    }
-    
-// Mark: -Keyboard methods
-    // Gets the height of the keyboard to move the view.
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        return keyboardSize.CGRectValue().height
-    }
-    
-    // Moves the view up when editing bottom text field.
-    func keyboardWillShow(notification: NSNotification) {
-        if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
-        }
-    }
-    
-    // Moves the view down when finished editing bottom text field.
-    func keyboardWillHide(notification: NSNotification) {
-        if bottomTextField.resignFirstResponder() {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    // Keyboard notification subscription
-    func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    // Keyboard notification unsubscription
-    func unsubscribeFromKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:
-            UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:
-            UIKeyboardWillHideNotification, object: nil)
     }
 }

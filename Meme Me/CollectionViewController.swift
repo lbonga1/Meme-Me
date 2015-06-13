@@ -1,5 +1,5 @@
 //
-//  CollectionView.swift
+//  CollectionViewController.swift
 //  Meme Me
 //
 //  Created by Lauren Bongartz on 5/3/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     
     // Outlets
@@ -35,7 +35,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.collectionView.reloadData()
     }
     
-// Mark: -CollectionView methods
+// MARK: - CollectionView methods
     // Collection View data source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return appDelegate.memes.count
@@ -83,7 +83,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         updateDeleteButtonTitle()
     }
     
-// Mark: - Additional methods
+// MARK: - Additional methods
     // Delete memes.
     func deleteSelection() {
         println("Starting delete")
@@ -148,7 +148,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-// Mark: -IBActions
+// MARK: - Actions
     // Edit button
     @IBAction func editMemes(sender: AnyObject) {
         // Hides and reveals necessary toolbars and buttons.
