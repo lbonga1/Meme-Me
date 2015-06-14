@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension ViewController {
+extension MemeEditorViewController {
     
 // MARK: - Image methods
     // Image selection method

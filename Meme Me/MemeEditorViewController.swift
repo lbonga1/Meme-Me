@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  Meme Me
 //
 //  Created by Lauren Bongartz on 3/30/15.
@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate  {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate  {
 
     
     // Outlets

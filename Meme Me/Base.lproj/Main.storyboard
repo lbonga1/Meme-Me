@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="jHq-xe-go4">
             <objects>
-                <viewController storyboardIdentifier="MemeEditorVC" automaticallyAdjustsScrollViewInsets="NO" id="gfO-09-PTP" customClass="ViewController" customModule="Meme_Me" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorVC" automaticallyAdjustsScrollViewInsets="NO" id="gfO-09-PTP" customClass="MemeEditorViewController" customModule="Meme_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1iM-Xy-oXe"/>
                         <viewControllerLayoutGuide type="bottom" id="BtI-C3-Mjs"/>
