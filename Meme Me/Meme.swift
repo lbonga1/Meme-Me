@@ -7,6 +7,11 @@
 
 import Foundation
 import UIKit
+import CoreData
+
+objc(Meme)
+
+class Meme: NSManagedObject {
 
 // Overload == function to utilize .find method
 func == (lhs: Meme, rhs: Meme) -> Bool {
@@ -33,4 +38,5 @@ struct Meme: Equatable {
         self.originalImage = originalImage
         self.memedImage = memedImage
     }
+}
 }

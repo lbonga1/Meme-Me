@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate {
         
@@ -18,7 +19,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var deleteButton: UIBarButtonItem!
     
-    // Global variable
+    // Variables
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var selectedMemes = [Meme]()
     
@@ -31,6 +32,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         updateDeleteButtonTitle()
         // Allows user to select multiple memes.
         self.tableView.allowsMultipleSelectionDuringEditing = true
+        
+        // Core Data convenience.
+        var sharedContext: NSManagedObjectContext {
+            return CoreDataStackManager.sharedInstance().managedObjectContext!
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,7 +49,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Redirects to MemeEditorVC if no memes have been sent.
         if appDelegate.memes.count == 0 {
             let storyboard = self.storyboard
-            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! MemeEditorViewController
             
             self.presentViewController(controller, animated: true, completion: nil)
         }
@@ -106,7 +112,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Gets Meme Editor View Controller if no sent memes are remaining.
         if appDelegate.memes.count == 0 {
             let storyboard = self.storyboard
-            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! MemeEditorViewController
             
             self.presentViewController(controller, animated: true, completion: nil)
         }
@@ -156,7 +162,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Gets Meme Editor View Controller if no sent memes are remaining.
         if appDelegate.memes.count == 0 {
             let storyboard = self.storyboard
-            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! MemeEditorViewController
             
             self.presentViewController(controller, animated: true, completion: nil)
         }
@@ -218,7 +224,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func newMeme(sender: AnyObject) {
         // Gets Meme Editor View Controller.
         let storyboard = self.storyboard
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! MemeEditorViewController
         
         self.presentViewController(controller, animated: true, completion: nil)
     }

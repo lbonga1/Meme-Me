@@ -338,8 +338,7 @@
                                         <include reference="rPq-Dk-k1S"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="400" height="336"/>
+                                <variation key="heightClass=compact-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Kts-X1-ZlS"/>
                                         <exclude reference="QSg-BI-F33"/>

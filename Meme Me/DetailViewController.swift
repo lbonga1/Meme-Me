@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
-    // Global variable
+    // Variables
     var sentMemes: Meme!
     var memeIndex = Int()
     
@@ -57,7 +57,7 @@ class DetailViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "detailToEdit") {
             let memeEditorVC = segue.destinationViewController as!
-            ViewController
+            MemeEditorViewController
             memeEditorVC.passedImage = self.sentMemes.originalImage
             memeEditorVC.passedTopText = self.sentMemes.topText
             memeEditorVC.passedBottomText = self.sentMemes.bottomText

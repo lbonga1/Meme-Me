@@ -21,7 +21,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomToolBar: UIToolbar!
 
     
-    // Global variable
+    // Variables
     var sentMemes: [Meme]!
     var passedImage: UIImage!
     var passedTopText:String!

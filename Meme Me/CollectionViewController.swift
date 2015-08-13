@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -18,7 +19,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
 
-    // Global variable
+    // Variables
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
@@ -27,6 +28,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         navigationItem.rightBarButtonItem = editButton
         navigationItem.leftBarButtonItem = addButton
         updateDeleteButtonTitle()
+        
+        // Core Data convenience.
+        var sharedContext: NSManagedObjectContext {
+            return CoreDataStackManager.sharedInstance().managedObjectContext!
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -127,7 +133,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         // Gets Meme Editor View Controller if no sent memes are remaining.
         if appDelegate.memes.count == 0 {
             let storyboard = self.storyboard
-            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! MemeEditorViewController
             
             self.presentViewController(controller, animated: true, completion: nil)
         }
@@ -198,7 +204,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBAction func newMeme(sender: AnyObject) {
         //Gets Meme Editor View Controller
         let storyboard = self.storyboard
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! ViewController
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorVC") as! MemeEditorViewController
         
         self.presentViewController(controller, animated: true, completion: nil)
     }

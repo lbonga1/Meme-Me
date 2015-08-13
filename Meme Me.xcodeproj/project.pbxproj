@@ -13,6 +13,8 @@
 		1A230B531AEC4DBA000E1A54 /* Meme_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A230B521AEC4DBA000E1A54 /* Meme_MeTests.swift */; };
 		1A230B641AEC5686000E1A54 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A230B631AEC5686000E1A54 /* TextFieldDelegate.swift */; };
 		1A63203F1AFAB26100352861 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63203E1AFAB26000352861 /* DetailViewController.swift */; };
+		1A72B2DE1B3F584400E7469C /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A72B2DD1B3F584400E7469C /* CoreDataStackManager.swift */; };
+		1A72B2E11B3F604E00E7469C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A72B2DF1B3F604E00E7469C /* Model.xcdatamodeld */; };
 		1A7F445A1AF29E22001170C9 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F44591AF29E22001170C9 /* MemeEditorViewController.swift */; };
 		1A7F445D1AF29E8F001170C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A7F445B1AF29E8F001170C9 /* Main.storyboard */; };
 		1A7F445F1AF2B139001170C9 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F445E1AF2B139001170C9 /* Meme.swift */; };
@@ -44,6 +46,8 @@
 		1A230B521AEC4DBA000E1A54 /* Meme_MeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme_MeTests.swift; sourceTree = "<group>"; };
 		1A230B631AEC5686000E1A54 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		1A63203E1AFAB26000352861 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1A72B2DD1B3F584400E7469C /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		1A72B2E01B3F604E00E7469C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		1A7F44591AF29E22001170C9 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 		1A7F445C1AF29E8F001170C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Meme Me/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		1A7F445E1AF2B139001170C9 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
@@ -98,8 +102,10 @@
 				1A230B5C1AEC537F000E1A54 /* Text Field Delegates */,
 				1A230B3C1AEC4DBA000E1A54 /* AppDelegate.swift */,
 				1A7F445E1AF2B139001170C9 /* Meme.swift */,
+				1A72B2DF1B3F604E00E7469C /* Model.xcdatamodeld */,
 				1AA9D6681B2CE01C007A9BA8 /* ConvenienceMethods.swift */,
 				1A7F445B1AF29E8F001170C9 /* Main.storyboard */,
+				1A72B2DD1B3F584400E7469C /* CoreDataStackManager.swift */,
 				1A230B431AEC4DBA000E1A54 /* Images.xcassets */,
 				1A230B451AEC4DBA000E1A54 /* LaunchScreen.xib */,
 				1A230B3A1AEC4DBA000E1A54 /* Supporting Files */,
@@ -262,6 +268,7 @@
 			files = (
 				1AA9D6691B2CE01C007A9BA8 /* ConvenienceMethods.swift in Sources */,
 				1A63203F1AFAB26100352861 /* DetailViewController.swift in Sources */,
+				1A72B2DE1B3F584400E7469C /* CoreDataStackManager.swift in Sources */,
 				1A93D5931AF69FFC00F72B3D /* TableViewContoller.swift in Sources */,
 				1A9224371AF9D43C008DBBFE /* CollectionViewCell.swift in Sources */,
 				1A93D5951AF6A0DD00F72B3D /* CollectionViewController.swift in Sources */,
@@ -270,6 +277,7 @@
 				1A7F445A1AF29E22001170C9 /* MemeEditorViewController.swift in Sources */,
 				1A230B3D1AEC4DBA000E1A54 /* AppDelegate.swift in Sources */,
 				1A7F445F1AF2B139001170C9 /* Meme.swift in Sources */,
+				1A72B2E11B3F604E00E7469C /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +486,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1A72B2DF1B3F604E00E7469C /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1A72B2E01B3F604E00E7469C /* Model.xcdatamodel */,
+			);
+			currentVersion = 1A72B2E01B3F604E00E7469C /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1A230B2F1AEC4DBA000E1A54 /* Project object */;
 }
