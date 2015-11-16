@@ -10,12 +10,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    // Outlets
+// MARK: - Outlets
     @IBOutlet weak var memeImageDetail: UIImageView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
-    // Variables
+// MARK: - Variables
     var sentMemes: Meme!
     var memeIndex = Int()
     
@@ -51,8 +51,10 @@ class DetailViewController: UIViewController {
         appDelegate.memes.removeAtIndex(memeIndex)
         self.navigationController!.popViewControllerAnimated(true)
     }
+}
     
 // MARK: - Additional method
+extension DetailViewController {
     // Pass meme data to Meme Editor View Controller.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "detailToEdit") {

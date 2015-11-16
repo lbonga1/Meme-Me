@@ -11,7 +11,7 @@ import CoreData
 
 @objc(Meme)
 
-class Meme: NSManagedObject, Equatable {
+class Meme: NSManagedObject {
     
     struct Meme {
         static let TopText = "top_text"

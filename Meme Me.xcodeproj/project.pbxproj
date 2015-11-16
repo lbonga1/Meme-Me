@@ -97,17 +97,9 @@
 		1A230B391AEC4DBA000E1A54 /* Meme Me */ = {
 			isa = PBXGroup;
 			children = (
-				1AA9D66B1B2CE949007A9BA8 /* View Controllers */,
-				1AA9D66A1B2CE918007A9BA8 /* Custom Cells */,
-				1A230B5C1AEC537F000E1A54 /* Text Field Delegates */,
-				1A230B3C1AEC4DBA000E1A54 /* AppDelegate.swift */,
-				1A7F445E1AF2B139001170C9 /* Meme.swift */,
-				1A72B2DF1B3F604E00E7469C /* Model.xcdatamodeld */,
-				1AA9D6681B2CE01C007A9BA8 /* ConvenienceMethods.swift */,
-				1A7F445B1AF29E8F001170C9 /* Main.storyboard */,
-				1A72B2DD1B3F584400E7469C /* CoreDataStackManager.swift */,
-				1A230B431AEC4DBA000E1A54 /* Images.xcassets */,
-				1A230B451AEC4DBA000E1A54 /* LaunchScreen.xib */,
+				1A37C82F1BFA4332000584B3 /* Model */,
+				1A37C8321BFA439F000584B3 /* View */,
+				1A37C8311BFA4380000584B3 /* Controller */,
 				1A230B3A1AEC4DBA000E1A54 /* Supporting Files */,
 			);
 			path = "Meme Me";
@@ -144,6 +136,46 @@
 				1A230B631AEC5686000E1A54 /* TextFieldDelegate.swift */,
 			);
 			name = "Text Field Delegates";
+			sourceTree = "<group>";
+		};
+		1A37C82F1BFA4332000584B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A230B3C1AEC4DBA000E1A54 /* AppDelegate.swift */,
+				1A7F445E1AF2B139001170C9 /* Meme.swift */,
+				1A37C8301BFA4363000584B3 /* Core Data */,
+				1A230B5C1AEC537F000E1A54 /* Text Field Delegates */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1A37C8301BFA4363000584B3 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				1A72B2DF1B3F604E00E7469C /* Model.xcdatamodeld */,
+				1A72B2DD1B3F584400E7469C /* CoreDataStackManager.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		1A37C8311BFA4380000584B3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1AA9D6681B2CE01C007A9BA8 /* ConvenienceMethods.swift */,
+				1AA9D66B1B2CE949007A9BA8 /* View Controllers */,
+				1AA9D66A1B2CE918007A9BA8 /* Custom Cells */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1A37C8321BFA439F000584B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A7F445B1AF29E8F001170C9 /* Main.storyboard */,
+				1A230B431AEC4DBA000E1A54 /* Images.xcassets */,
+				1A230B451AEC4DBA000E1A54 /* LaunchScreen.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		1AA9D66A1B2CE918007A9BA8 /* Custom Cells */ = {
@@ -210,7 +242,9 @@
 		1A230B2F1AEC4DBA000E1A54 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Lauren Bongartz";
 				TargetAttributes = {
 					1A230B361AEC4DBA000E1A54 = {
@@ -341,6 +375,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -407,6 +442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Meme Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.udacity.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -417,6 +453,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Meme Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.udacity.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -425,16 +462,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Meme MeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.udacity.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meme Me.app/Meme Me";
 			};
@@ -444,12 +478,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "Meme MeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.udacity.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meme Me.app/Meme Me";
 			};

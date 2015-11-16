@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 
+// Mark: - Additional image methods
 extension MemeEditorViewController {
-    
-// MARK: - Image methods
     // Image selection method
     func selectImage(source: UIImagePickerControllerSourceType) {
         // Enables share button.
@@ -22,14 +21,6 @@ extension MemeEditorViewController {
         imagePicker.delegate = self
         imagePicker.sourceType = source
         self.presentViewController(imagePicker, animated: true, completion: nil)
-    }
-    
-    // Sets UIImageView to selected image.
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject: AnyObject]!) {
-        let selectedImage : UIImage = image
-        imagePickerView.image = selectedImage
-        imagePickerView.contentMode = .ScaleAspectFit
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Create a UIImage that combines the image view and text fields.
@@ -65,16 +56,24 @@ extension MemeEditorViewController {
     // Create the meme object and add it to memes array.
     func saveMeme() {
         //Create the meme
-        var meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage:
-            imagePickerView.image!, memedImage: generateMemedImage())
+        let dictionary = [
+            "topText": topTextField.text!,
+            "bottomText": bottomTextField.text!,
+            "originalImage": imagePickerView.image!,
+            "memedImage": generateMemedImage()
+        ]
+        
+        let meme = Meme(dictionary: dictionary, context: self.sharedContext)
         
         // Add it to the memes array in the Application Delegate
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
     }
+}
     
 // MARK: - Keyboard methods
+extension MemeEditorViewController {
     // Gets the height of the keyboard to move the view.
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
@@ -109,5 +108,4 @@ extension MemeEditorViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillHideNotification, object: nil)
     }
-    
 }

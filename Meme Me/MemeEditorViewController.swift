@@ -7,10 +7,10 @@
 //
 
 import UIKit
-class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate  {
 
-    
-    // Outlets
+class MemeEditorViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate  {
+
+// MARK: - Outlets
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
@@ -21,7 +21,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomToolBar: UIToolbar!
 
     
-    // Variables
+// MARK: - Variables
     var sentMemes: [Meme]!
     var passedImage: UIImage!
     var passedTopText:String!
@@ -42,7 +42,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.bottomTextField.delegate = textDelegate
     }
     
-    override func viewWillAppear(Bool) {
+    override func viewWillAppear(_: Bool) {
         // Shared data source
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
@@ -80,8 +80,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
         
         // Sets text field properties.
-        setTextProperties(topTextField, "TOP")
-        setTextProperties(bottomTextField, "BOTTOM")
+        setTextProperties(topTextField, defaultString: "TOP")
+        setTextProperties(bottomTextField, defaultString: "BOTTOM")
         
         self.subscribeToKeyboardNotifications()
     }
@@ -90,6 +90,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillDisappear(animated)
         self.unsubscribeFromKeyboardNotifications()
     }
+    
+// MARK: - Core Data Convenience
+    // Shared context
+    lazy var sharedContext = {CoreDataStackManager.sharedInstance().managedObjectContext}()
     
 // MARK: - Actions
     // Choose an image from photo library.
@@ -133,5 +137,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             // Displays sent memes in table view.
             self.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+}
+
+// MARK: ImagePicker delegate
+extension MemeEditorViewController: UIImagePickerControllerDelegate {
+    
+    // Sets UIImageView to selected image.
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject: AnyObject]!) {
+        let selectedImage : UIImage = image
+        imagePickerView.image = selectedImage
+        imagePickerView.contentMode = .ScaleAspectFit
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

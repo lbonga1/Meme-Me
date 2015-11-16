@@ -12,7 +12,7 @@ import UIKit
 class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let newText = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        let newText = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
         textField.text = newText.uppercaseString
         return false
         // Replaces text input with string in all capital letters.
