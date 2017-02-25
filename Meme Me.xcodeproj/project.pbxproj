@@ -93,15 +93,9 @@
 		1A230B391AEC4DBA000E1A54 /* Meme Me */ = {
 			isa = PBXGroup;
 			children = (
-				1AA9D66B1B2CE949007A9BA8 /* View Controllers */,
-				1AA9D66A1B2CE918007A9BA8 /* Custom Cells */,
-				1A230B5C1AEC537F000E1A54 /* Text Field Delegates */,
-				1A230B3C1AEC4DBA000E1A54 /* AppDelegate.swift */,
-				1A7F445E1AF2B139001170C9 /* Meme.swift */,
-				1AA9D6681B2CE01C007A9BA8 /* ConvenienceMethods.swift */,
-				1A7F445B1AF29E8F001170C9 /* Main.storyboard */,
-				1A230B431AEC4DBA000E1A54 /* Images.xcassets */,
-				1A230B451AEC4DBA000E1A54 /* LaunchScreen.xib */,
+				FFAF43701E610D4E0004E949 /* Model */,
+				FFAF43711E610D550004E949 /* View */,
+				1AA9D66B1B2CE949007A9BA8 /* Controller */,
 				1A230B3A1AEC4DBA000E1A54 /* Supporting Files */,
 			);
 			path = "Meme Me";
@@ -132,14 +126,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1A230B5C1AEC537F000E1A54 /* Text Field Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				1A230B631AEC5686000E1A54 /* TextFieldDelegate.swift */,
-			);
-			name = "Text Field Delegates";
-			sourceTree = "<group>";
-		};
 		1AA9D66A1B2CE918007A9BA8 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +135,7 @@
 			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
-		1AA9D66B1B2CE949007A9BA8 /* View Controllers */ = {
+		1AA9D66B1B2CE949007A9BA8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				1A7F44591AF29E22001170C9 /* MemeEditorViewController.swift */,
@@ -157,7 +143,29 @@
 				1A93D5941AF6A0DD00F72B3D /* CollectionViewController.swift */,
 				1A63203E1AFAB26000352861 /* DetailViewController.swift */,
 			);
-			name = "View Controllers";
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FFAF43701E610D4E0004E949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A230B3C1AEC4DBA000E1A54 /* AppDelegate.swift */,
+				1A7F445E1AF2B139001170C9 /* Meme.swift */,
+				1AA9D6681B2CE01C007A9BA8 /* ConvenienceMethods.swift */,
+				1A230B631AEC5686000E1A54 /* TextFieldDelegate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FFAF43711E610D550004E949 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A230B431AEC4DBA000E1A54 /* Images.xcassets */,
+				1A230B451AEC4DBA000E1A54 /* LaunchScreen.xib */,
+				1A7F445B1AF29E8F001170C9 /* Main.storyboard */,
+				1AA9D66A1B2CE918007A9BA8 /* Custom Cells */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,9 +217,11 @@
 				TargetAttributes = {
 					1A230B361AEC4DBA000E1A54 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0820;
 					};
 					1A230B4B1AEC4DBA000E1A54 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0820;
 						TestTargetID = 1A230B361AEC4DBA000E1A54;
 					};
 				};
@@ -400,6 +410,7 @@
 				INFOPLIST_FILE = "Meme Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -410,6 +421,7 @@
 				INFOPLIST_FILE = "Meme Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -428,6 +440,7 @@
 				INFOPLIST_FILE = "Meme MeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meme Me.app/Meme Me";
 			};
 			name = Debug;
@@ -443,6 +456,7 @@
 				INFOPLIST_FILE = "Meme MeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meme Me.app/Meme Me";
 			};
 			name = Release;

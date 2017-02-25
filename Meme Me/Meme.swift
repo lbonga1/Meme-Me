@@ -25,12 +25,4 @@ struct Meme: Equatable {
     let bottomText: String
     let originalImage: UIImage
     let memedImage: UIImage
-
-    // Initiate struct.
-    init (topText: String, bottomText: String, originalImage: UIImage, memedImage: UIImage){
-        self.topText = topText
-        self.bottomText = bottomText
-        self.originalImage = originalImage
-        self.memedImage = memedImage
-    }
 }

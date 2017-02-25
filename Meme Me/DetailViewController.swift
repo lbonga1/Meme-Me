@@ -10,57 +10,58 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    // Outlets
+// MARK: - Outlets
     @IBOutlet weak var memeImageDetail: UIImageView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
-    // Global variable
+// MARK: - Variables
     var sentMemes: Meme!
     var memeIndex = Int()
     
-    override func viewWillAppear(animated: Bool) {
+// MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hides bottom tab bar.
-        self.tabBarController?.tabBar.hidden = true
+        tabBarController?.tabBar.isHidden = true
         
         // Sets UIImageView to meme image.
-        self.memeImageDetail!.image = self.sentMemes.memedImage
-        self.memeImageDetail!.contentMode = .ScaleAspectFit
+        memeImageDetail!.image = sentMemes.memedImage
+        memeImageDetail!.contentMode = .scaleAspectFit
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Displays bottom tab bar.
-        self.tabBarController?.tabBar.hidden = false
+        tabBarController?.tabBar.isHidden = false
     }
     
 // MARK: - Actions
     // Edit button
-    @IBAction func editMeme(sender: UIBarButtonItem) {
+    @IBAction func editMeme(_ sender: UIBarButtonItem) {
         // Segue to Meme Editor View Controller
-        self.performSegueWithIdentifier("detailToEdit", sender: self)
+        performSegue(withIdentifier: "detailToEdit", sender: self)
     }
 
     // Delete button
-    @IBAction func deleteMeme(sender: UIBarButtonItem) {
+    @IBAction func deleteMeme(_ sender: UIBarButtonItem) {
         // Shared data source
-        let object = UIApplication.sharedApplication().delegate
+        let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         // Removes meme from array.
-        appDelegate.memes.removeAtIndex(memeIndex)
-        self.navigationController!.popViewControllerAnimated(true)
+        appDelegate.memes.remove(at: memeIndex)
+        navigationController!.popViewController(animated: true)
     }
     
 // MARK: - Additional method
     // Pass meme data to Meme Editor View Controller.
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailToEdit") {
-            let memeEditorVC = segue.destinationViewController as!
-            ViewController
-            memeEditorVC.passedImage = self.sentMemes.originalImage
-            memeEditorVC.passedTopText = self.sentMemes.topText
-            memeEditorVC.passedBottomText = self.sentMemes.bottomText
+            let memeEditorVC = segue.destination as!
+            MemeEditorViewController
+            memeEditorVC.passedImage = sentMemes.originalImage
+            memeEditorVC.passedTopText = sentMemes.topText
+            memeEditorVC.passedBottomText = sentMemes.bottomText
         }
     }
 }

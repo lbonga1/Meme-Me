@@ -11,23 +11,22 @@ import UIKit
 
 class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let newText = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
-        textField.text = newText.uppercaseString
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        textField.text = newText?.uppercased()
+        
         return false
-        // Replaces text input with string in all capital letters.
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.attributedPlaceholder = NSAttributedString(string: "")
-        // Clears text field when it is selected.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        return true;
-        // Dismisses keyboard when user taps "return".
+        return true
     }
     
 }
